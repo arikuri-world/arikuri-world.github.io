@@ -101,7 +101,7 @@ h1,h2,h3,h4,p{margin:0}
 .lore .ic img{width:46px;height:46px;object-fit:cover}.lore .ic img.g{object-fit:contain}
 .lore .part{margin-top:18px}.lore .part pre{margin:6px 0 0;white-space:pre-wrap;font:inherit;font-family:var(--f-quote);font-style:italic;font-size:19px;line-height:1.55;color:var(--ink)}.lore .part.ipa pre{font-family:var(--f-body);font-style:normal;font-size:17px}
 .ri{display:inline-block;width:34px;height:34px;object-fit:contain;vertical-align:-9px;margin:0 10px 0 0}.fc .hd .ri{width:28px;height:28px;vertical-align:-7px;margin-right:8px}.rl{display:flex;flex-wrap:wrap;gap:4px 12px}.rl span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}.rl img{width:20px;height:20px;object-fit:contain}
-.themes{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:14px}.btn.thm{padding:6px 14px;font-size:14px}#trktag{margin-left:14px;flex:none}
+.themes{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:14px}.btn.thm{padding:6px 14px;font-size:14px}.thm.lr{white-space:normal;text-align:left}#trktag{margin-left:14px;flex:none}
 .lore .sc p{margin:6px 0 0;color:var(--ink);line-height:1.6}
 .lore .vs .ln{margin-top:10px}.lore .vs .ln.off>div{opacity:.45}.lore .vs .ln.off .t-label{margin-left:10px;font-style:normal;opacity:1}.lore .vs .r{font-family:var(--f-quote);font-style:italic;font-size:20px;line-height:1.35;color:var(--parchment)}.lore .vs .i{font-family:var(--f-body);font-size:15px;color:var(--ink-faint)}.lore .vs .e{font-size:16.5px;color:var(--ink)}
 .lore .ic i{display:block;width:26px;height:26px;background:var(--parchment);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:auto 100%;mask-size:auto 100%;-webkit-mask-position:left center;mask-position:left center}
@@ -425,6 +425,7 @@ function civPage(c){
   const hero=c.art?`<img class="bg" src="art/${c.art}.jpg" alt=""${foc(c.art)}>`:`<div class="em" style="${mask(scriptFile(c))}"></div>`;
   const tb=t=>`<button class="btn line thm" data-track="${esc(t.file)}">&#9654; ${esc(t.title)}</button>`;
   const civT=TRACKS.filter(t=>t.civ===c.key&&!t.rel);
+  const civL=LORE.filter(l=>l.civs.includes(c.key));
   const rels=c.religions.map(r=>`<div class="rel"><h3 class="t-h3">${r.icon?`<img class="ri" src="img/rel/${r.icon}.png" alt="">`:''}${esc(r.name)}<span class="t-label ad">${esc(r.adherents)} · ${r.faiths} faiths</span></h3><p>${esc(r.desc)}</p>${TRACKS.filter(t=>t.civ===c.key&&t.rel===r.name).map(t=>`<div class="themes"><span class="t-label">Theme</span>${tb(t)}</div>`).join('')}</div>`).join('');
   const unitArt=c.unitArt.length?`<div class="unitart">${c.unitArt.map(a=>`<img src="art/${a}.jpg" alt="${esc(c.unit.name)}" loading="lazy"${foc(a)}>`).join('')}</div>`:'';
   const facs=isE?`<section class="sec"><h2 class="t-h2">The four factions</h2><p class="muted" style="margin:-4px 0 16px">One empire, four realms, four paths of the same faith. Each has its own government, colours and vowel mark.</p><div class="facs">${FACS.map(f=>`<a class="fc" href="#civ-aiexqelt-${f.key}"><div class="hd" style="background:${f.banner}"><div class="gl" style="${mask('script-aiexqelt-'+f.key)};background:${f.coa.l[0]}"></div><h3 class="t-h3">${f.icon?`<img class="ri" src="img/rel/${f.icon}.png" alt="">`:''}${esc(f.name)}</h3></div><div class="bd"><div class="t-label">${esc(f.gov)}</div><div class="t-small muted" style="margin-top:6px">${esc(f.path[0].toUpperCase()+f.path.slice(1))}. ${esc(f.realm)}.</div></div></a>`).join('')}</div></section>`:'';
@@ -437,7 +438,7 @@ function civPage(c){
   <div class="cvbar"><div class="wrap"><a class="t-label" href="#map">← Back to the map</a></div></div>
   <div class="wrap"><div class="band"><div class="cvgrid">
     <div>
-      <section class="sec"><h2 class="t-h2">Origins</h2><p class="t-lead">${esc(c.origin)}</p>${civT.length?`<div class="themes"><span class="t-label">${civT.length>1?'Themes':'Theme'}</span>${civT.map(tb).join('')}</div>`:''}</section>
+      <section class="sec"><h2 class="t-h2">Origins</h2><p class="t-lead">${esc(c.origin)}</p>${civT.length?`<div class="themes"><span class="t-label">${civT.length>1?'Themes':'Theme'}</span>${civT.map(tb).join('')}</div>`:''}${civL.length?`<div class="themes"><span class="t-label">Lore</span>${civL.map(l=>`<a class="btn line thm lr" href="#lore-${l.id}">${esc(l.title)}</a>`).join('')}</div>`:''}</section>
       <section class="sec"><h2 class="t-h2">Peoples and religions</h2><div class="feat nums">${[['heritages','Heritages'],['cultures','Cultures'],['realms','Independent realms at the start'],['religions','Religions'],['faiths','Faiths']].map(([k,l])=>`<div><b>${c.counts[k]}</b><span class="t-label">${l}</span></div>`).join('')}</div><div style="margin-top:18px">${rels}</div></section>
       ${facs}
       <section class="sec"><h2 class="t-h2">How they play</h2>
