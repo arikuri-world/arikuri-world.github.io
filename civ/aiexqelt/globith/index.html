@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="../../../">
+<title>Enth · Aiexqelt · Arikuri</title>
+<!--seo:head-->
+<meta name="description" content="Enth embraces the teaching of Dexa that only a single, absolute command stands between civilisation and collapse.">
+<link rel="canonical" href="https://arikuri-world.github.io/civ/aiexqelt/globith/">
+<meta property="og:site_name" content="Arikuri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Enth · Aiexqelt · Arikuri">
+<meta property="og:description" content="Enth embraces the teaching of Dexa that only a single, absolute command stands between civilisation and collapse.">
+<meta property="og:url" content="https://arikuri-world.github.io/civ/aiexqelt/globith/">
+<meta property="og:image" content="https://arikuri-world.github.io/art/aiexqelt-globith.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e1118">
+<!--/seo:head-->
+<link rel="stylesheet" href="fonts.css">
+<style>
+/* VOICE: a field atlas of an inhabited exoplanet, half chronicle, half observer report
+   IDEA: the Writing Systems sheets made explorable: relief map, hatched veils, pills, native scripts
+   PICTURE: the painted valley as hero, then the Thekan relief map with 21 territory veils
+   COLOUR and TYPE: Arikuri design system, Night theme; one type direction at a time, set by variables
+   LAYOUT: full-bleed bands, content to 1240px, civilization pages as banner + chronicle column + observer sidebar */
+:root{color-scheme:dark;
+--bg:#0f1119;--bg-raised:#181b27;--bg-sunken:#0a0b10;--sea:#1f2933;--ink:#f1e9dc;--ink-muted:#b7aec4;--ink-faint:#8f879c;--hairline:#2d3142;
+--violet:#a796d3;--violet-deep:#3d3366;--night-bar:#12133a;--jungle:#6f9a5a;--parchment:#fae6cf;--observer:#a99cf3;--wip:#c8384a;--gold:#e4c46a;
+--f-display:"Alegreya SC",Georgia,serif;--w-display:500;--ls-display:.03em;--tt-display:none;
+--f-head:"Alegreya",Georgia,serif;--w-head:600;--f-quote:"Alegreya",Georgia,serif;--f-pill:"Alegreya",Georgia,serif;
+--f-body:"Alegreya Sans",system-ui,sans-serif;--s-body:17px;--f-data:"Jura",system-ui,sans-serif;--w-data:600;
+--r-sm:3px;--r-md:6px;--pill:999px}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--s-body)/1.6 var(--f-body);overflow-x:clip;padding-bottom:64px}
+a{color:var(--violet)}a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+img{display:block;max-width:100%}
+h1,h2,h3,h4,p{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 max(4vw,16px)}
+.band{padding:clamp(40px,6vw,84px) 0}
+/* type scale: every text on the site uses one of these */
+.t-banner{font-family:var(--f-display);font-weight:var(--w-display);letter-spacing:var(--ls-display);text-transform:var(--tt-display);line-height:1;font-size:clamp(48px,7.5vw,92px)}
+.t-h1{font-family:var(--f-head);font-weight:var(--w-head);font-size:clamp(30px,3.6vw,42px);line-height:1.12;text-wrap:balance}
+.t-h2{font-family:var(--f-head);font-weight:var(--w-head);font-size:clamp(25px,2.6vw,31px);line-height:1.2;text-wrap:balance}
+.t-h3{font-family:var(--f-head);font-weight:var(--w-head);font-size:22px;line-height:1.25}
+.t-quote{font-family:var(--f-quote);font-style:italic;font-weight:400;font-size:20px;line-height:1.55}
+.t-lead{font-family:var(--f-body);font-weight:400;font-size:calc(var(--s-body) + 3px);line-height:1.55}
+.t-small{font-family:var(--f-body);font-weight:400;font-size:15px;line-height:1.5}
+.t-label{font-family:var(--f-data);font-weight:var(--w-data);font-size:12px;line-height:1.35;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.t-value{font-family:var(--f-data);font-weight:500;font-size:15px;line-height:1.45}
+.t-pill{font-family:var(--f-pill);font-weight:500;font-size:17px;line-height:1.3}
+.muted{color:var(--ink-muted)}.obs{color:var(--observer)}.gold{color:var(--gold)}
+/* nav */
+.top{position:sticky;top:0;z-index:20;background:rgba(18,19,58,.94);backdrop-filter:blur(8px);border-bottom:1px solid #23255a}
+.top .wrap{display:flex;align-items:center;gap:18px;min-height:60px}
+.top .mark{height:38px;width:auto}
+.top nav{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.top nav a{color:var(--ink-muted);text-decoration:none;padding:10px 12px;border-radius:var(--pill)}
+.top nav a:hover,.top nav a.on{color:var(--parchment);background:var(--violet-deep)}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:var(--pill);font:700 15px var(--f-body);text-decoration:none;cursor:pointer;border:1px solid transparent;background:none;color:var(--parchment)}
+.btn.fill{background:var(--violet-deep)}.btn.fill:hover{background:#4c4080}
+.btn.line{border-color:rgba(250,230,207,.45)}.btn.line:hover{border-color:var(--parchment)}
+/* hero */
+.hero{position:relative;min-height:min(76vh,700px);display:flex;align-items:flex-end;overflow:hidden}
+.hero>img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,25,0) 35%,rgba(15,17,25,.55) 70%,var(--bg) 100%)}
+.hero .inner{position:relative;z-index:1;width:100%;padding-bottom:clamp(28px,5vw,56px)}
+.hero .copy{width:min(500px,100%);margin:0 auto;text-align:center}
+.hero .wm{display:block;width:100%;height:auto;margin:0 0 16px;filter:drop-shadow(0 6px 22px rgba(0,0,0,.5))}
+.hero .t-quote{color:var(--parchment);max-width:none;margin:0 0 20px;font-style:normal;font-size:clamp(15px,1.9vw,18.5px);line-height:1.45;text-wrap:balance}
+.hero .cta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.hero .cta .btn{padding-left:6px;padding-right:6px;text-align:center;justify-content:center;white-space:nowrap}
+.btn.off{opacity:.5;cursor:default;pointer-events:none}
+@media(max-width:520px){.hero .cta{grid-template-columns:minmax(0,1fr)}}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.bar{background:var(--night-bar)}
+.bar .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center;min-height:52px;padding-block:10px;color:var(--parchment)}
+.bar .stat{margin-left:auto}
+/* map */
+.maphead{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:end;justify-content:space-between;margin-bottom:22px}
+.map{position:relative;width:100%;aspect-ratio:2/1;background:var(--sea);border-radius:var(--r-md);overflow:hidden;border:1px solid var(--hairline);touch-action:manipulation}
+.map .stage{position:absolute;left:0;top:0;width:100%;height:100%}
+.map .stage img,.map .stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.map .labels{position:absolute;inset:0;pointer-events:none}
+.pill{display:inline-flex;align-items:center;gap:8px;border-radius:var(--pill);padding:4px 14px;color:var(--parchment);white-space:nowrap;text-decoration:none}
+.labels .pill{position:absolute;transform:translate(-50%,-50%);font-size:clamp(11px,1.2vw,16px);padding:2px 10px;box-shadow:0 2px 10px rgba(0,0,0,.35);transition:transform .15s}
+.labels .pill.hot{transform:translate(-50%,-50%) scale(1.12)}
+.tip{position:absolute;z-index:3;pointer-events:none;background:rgba(10,11,16,.92);border:1px solid var(--hairline);border-radius:var(--r-md);padding:10px 14px;min-width:190px;opacity:0;transition:opacity .12s}
+.tip.on{opacity:1}.tip .t-h3{color:var(--parchment)}
+.tip .go{display:none;margin-top:8px;pointer-events:auto}.tip.touch .go{display:inline-flex}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.legend button{border:0;cursor:pointer;min-height:40px}.legend button.dim{opacity:.45}
+.note{margin-top:10px;color:var(--ink-faint)}
+.sindex{border-top:1px solid var(--hairline);padding:22px 0 6px;color:var(--ink-faint)}.sindex p{margin:0 0 10px;line-height:1.9}.sindex .t-label{margin-right:10px}.sindex a{color:inherit}.sindex a:hover{color:var(--parchment)}
+.spre{max-width:78ch}.spre h2{margin-top:28px}.spre h3{margin-top:18px}.spre p,.spre ul,.spre pre{margin-top:10px}.spre pre{white-space:pre-wrap;font:inherit}
+/* feature stripes */
+.fs{border-top:1px solid var(--hairline)}
+.fsrow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:20px 56px;align-items:end;padding:clamp(34px,5vw,60px) 0 clamp(22px,3vw,34px)}
+.fsrow .t-h1{margin-top:6px}
+.cs{background:var(--night-bar)}
+.cs .wrap{display:flex;flex-wrap:wrap;gap:0}
+.cs .wrap>div{flex:1 1 150px;padding:18px 20px 16px 0}
+.cs b{display:block;font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(26px,2.8vw,36px);line-height:1.1;color:var(--parchment);white-space:nowrap}
+.pmg{display:grid;grid-template-columns:minmax(0,1.6fr) auto;gap:16px 40px;align-items:center;padding:22px 0 30px}.pmg p{margin-top:6px;max-width:86ch}
+.credits{padding:14px 0 18px}.credits summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:10px;padding:6px 0}.credits summary::-webkit-details-marker{display:none}.credits summary::after{content:"+";font-size:1.2em;line-height:1}.credits[open] summary::after{content:"\2212"}.credits summary:hover{color:var(--parchment)}.credits .pmg{padding:8px 0 10px}.credits .pmg p{margin-top:0}
+@media(max-width:800px){.pmg{grid-template-columns:minmax(0,1fr)}}
+/* lore feed */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:22px 0 4px}
+.tabs a{text-decoration:none;color:var(--ink-muted);padding:10px 18px;border-radius:var(--pill);border:1px solid var(--hairline)}
+.tabs a.on{background:var(--violet-deep);color:var(--parchment);border-color:transparent}
+.lore{border-top:1px solid var(--hairline)}.lore:last-child{border-bottom:1px solid var(--hairline)}
+.lore summary{display:flex;align-items:center;gap:16px;padding:16px 4px;cursor:pointer;list-style:none}
+.lore summary::-webkit-details-marker{display:none}
+.lore summary:hover .t-h3{color:var(--parchment)}
+.lore .ic{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;overflow:hidden;background:var(--bg-raised);border:1px solid var(--hairline)}
+.lore .ic img{width:46px;height:46px;object-fit:cover}.lore .ic img.g{object-fit:contain}
+.lore .part{margin-top:18px}.lore .part pre{margin:6px 0 0;white-space:pre-wrap;font:inherit;font-family:var(--f-quote);font-style:italic;font-size:19px;line-height:1.55;color:var(--ink)}.lore .part.ipa pre{font-family:var(--f-body);font-style:normal;font-size:17px}
+.ri{display:inline-block;width:34px;height:34px;object-fit:contain;vertical-align:-9px;margin:0 10px 0 0}.fc .hd .ri{width:28px;height:28px;vertical-align:-7px;margin-right:8px}.rl{display:flex;flex-wrap:wrap;gap:4px 12px}.rl span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}.rl img{width:20px;height:20px;object-fit:contain}
+.themes{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:14px}.btn.thm{padding:6px 14px;font-size:14px}.thm.lr{white-space:normal;text-align:left}#trktag{margin-left:14px;flex:none}
+.lore .sc p{margin:6px 0 0;color:var(--ink);line-height:1.6}
+.lore .vs .ln{margin-top:10px}.lore .vs .ln.off>div{opacity:.45}.lore .vs .ln.off .t-label{margin-left:10px;font-style:normal;opacity:1}.lore .vs .r{font-family:var(--f-quote);font-style:italic;font-size:20px;line-height:1.35;color:var(--parchment)}.lore .vs .i{font-family:var(--f-body);font-size:15px;color:var(--ink-faint)}.lore .vs .e{font-size:16.5px;color:var(--ink)}
+.lore .ic i{display:block;width:26px;height:26px;background:var(--parchment);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:auto 100%;mask-size:auto 100%;-webkit-mask-position:left center;mask-position:left center}
+.lore .ic svg{width:30px;height:30px;color:var(--observer)}
+.lore .chev{margin-left:auto;color:var(--ink-faint);transition:transform .15s}.lore[open] .chev{transform:rotate(90deg)}
+.lore .body{padding:0 4px 22px 66px;max-width:820px}
+.lore .body .t-quote{color:var(--ink)}
+.lore .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;align-items:center}
+@media(max-width:800px){.fsrow{grid-template-columns:minmax(0,1fr)}.lore .body{padding-left:4px}}
+/* blocks */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{background:var(--bg-raised);border:1px solid var(--hairline);border-radius:var(--r-md);padding:22px 24px}
+.card p{margin-top:8px;color:var(--ink-muted)}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--hairline);border:1px solid var(--hairline);border-radius:var(--r-md);overflow:hidden;margin-top:26px}
+.feat div{background:var(--bg);padding:18px 20px}.feat.nums{margin-top:0;grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}.feat.nums div{padding:14px 16px}.feat b{display:block;font-family:var(--f-display);font-weight:var(--w-display);font-size:clamp(28px,3vw,38px);line-height:1.1;color:var(--parchment)}
+.civs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:26px}
+.cc{display:block;text-decoration:none;color:inherit;background:var(--bg-raised);border:1px solid var(--hairline);border-radius:var(--r-md);overflow:hidden;transition:border-color .15s,transform .15s}
+.cc:hover{border-color:var(--gold);transform:translateY(-2px)}
+.cc .band2{padding:16px 16px 12px}.cc .gl{height:88px;-webkit-mask-size:auto 100%;mask-size:auto 100%}.cc .t-h2{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:28px;line-height:34px;height:34px}.cc .meta .t-label{line-height:18px;height:18px}.cc .meta .t-small{font-size:14.5px;line-height:22px}.cc .meta .t-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cc .meta .rl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px 10px;height:50px;align-content:start;overflow:hidden}.cc .meta .rl span{min-width:0;overflow:hidden;text-overflow:ellipsis;height:22px}.cc .meta .rl img{flex:none}.cc{display:flex;flex-direction:column}.cc .meta{flex:1;display:flex;flex-direction:column}.cc .meta .sw{margin-top:auto;padding-top:10px}
+.gl{height:44px;background:var(--parchment);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:left center;mask-position:left center;-webkit-mask-size:contain;mask-size:contain}
+.cc .t-h2{color:var(--parchment);margin-top:10px}
+.cc .meta{padding:12px 16px 16px}
+.sw{display:flex;gap:4px;margin-top:10px}.sw i{width:20px;height:8px;border-radius:2px}
+.posts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:26px}
+.nc{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:var(--bg-raised);border:1px solid var(--hairline);border-radius:var(--r-md);overflow:hidden}
+.nc:hover{border-color:var(--gold)}
+.nc img{aspect-ratio:16/8;object-fit:cover;width:100%}
+.nc .b{padding:16px 20px 20px}.nc .t-h3{margin:6px 0}
+.sechead{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
+.article{max-width:820px}
+.article img.lead{border-radius:var(--r-md);margin:22px 0;aspect-ratio:16/7;object-fit:cover;width:100%}
+.article h4{margin:26px 0 8px}
+.article ul{margin:0;padding-left:20px;color:var(--ink-muted)}.article li{margin:5px 0}
+.article blockquote{margin:24px 0;padding:6px 0 6px 22px;border-left:2px solid var(--gold);color:var(--ink)}
+/* civ page */
+.cv-hero{position:relative;min-height:min(60vh,540px);display:flex;align-items:flex-end;overflow:hidden;background:var(--c)}
+.cv-hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.cv-hero .em{position:absolute;inset:0;opacity:.13;background:var(--parchment);-webkit-mask-repeat:repeat;mask-repeat:repeat;-webkit-mask-size:auto 120px;mask-size:auto 120px}
+.cv-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,25,0) 25%,rgba(15,17,25,.6) 65%,var(--bg) 100%)}
+.cv-hero .inner{position:relative;z-index:1;width:100%;padding-bottom:36px}
+.cv-hero .gl{height:clamp(44px,6vw,72px)}
+.cv-hero .t-banner{color:var(--parchment);margin:14px 0 6px}
+.cv-hero .t-quote{color:var(--parchment)}
+.cvbar{background:var(--c)}.cvbar .wrap{display:flex;gap:10px 28px;flex-wrap:wrap;align-items:center;min-height:48px;padding-block:8px}
+.cvbar .t-label,.cvbar a{color:var(--parchment)}
+.cvgrid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:48px}
+.sec{margin-top:44px}.sec:first-child{margin-top:0}
+.sec>.t-h2{padding-bottom:10px;border-bottom:1px solid var(--vl);margin-bottom:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{border:1px solid var(--hairline);border-radius:var(--pill);padding:4px 12px}
+.chip b{font-weight:500;color:var(--ink)}
+.rel{padding:16px 0;border-top:1px solid var(--hairline)}.rel:first-of-type{border-top:0}
+.rel .ad{margin-left:10px}.rel p{margin-top:6px;color:var(--ink-muted)}
+.mech{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.mech .t-label{color:var(--vl)}.mech .t-h3{margin-top:6px}
+.unitart{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}
+.unitart img{border-radius:var(--r-md);aspect-ratio:17/10;object-fit:cover;width:100%}
+.facs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.fc{display:block;text-decoration:none;color:inherit;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--hairline);background:var(--bg-raised)}
+.fc:hover{border-color:var(--gold)}.fc .hd{padding:14px 16px}.fc .hd .t-h3{color:var(--parchment);margin-top:8px}.fc .bd{padding:12px 16px 16px}
+.side>*+*{margin-top:22px}
+dl.ro{display:grid;grid-template-columns:118px minmax(0,1fr);margin:0}
+dl.ro dt,dl.ro dd{padding:8px 0;border-top:1px solid var(--hairline);margin:0}
+.att{display:inline-block;border-radius:var(--pill);padding:2px 12px;border:1px solid var(--vl);color:var(--ink)}
+.spec{background:var(--d1);border-radius:var(--r-md);padding:18px}
+.spec .gl{height:64px;background:var(--l1)}
+.spec .gl.em2{margin-top:14px;background:var(--m1);height:40px}
+.pal{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.pal i{display:block;aspect-ratio:1.6;border-radius:var(--r-sm)}
+.pn{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:56px;padding-top:24px;border-top:1px solid var(--hairline)}
+/* typography view */
+.ty{border:1px solid var(--hairline);border-radius:var(--r-md);overflow:hidden;margin-top:28px;background:var(--bg-raised)}
+.ty.cur{border-color:var(--gold)}
+.ty .hd{display:flex;gap:12px 20px;align-items:center;flex-wrap:wrap;padding:14px 22px;border-bottom:1px solid var(--hairline);font:400 15px/1.4 system-ui,sans-serif;color:var(--ink-muted)}
+.ty .hd b{color:var(--ink);font-size:17px}.ty .hd .btn{margin-left:auto;font-family:system-ui,sans-serif}
+.ty .bn{position:relative;height:210px;overflow:hidden}
+.ty .bn img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%}
+.ty .bn:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,25,0) 20%,rgba(15,17,25,.8))}
+.ty .bn .t-banner{position:absolute;z-index:1;left:22px;bottom:16px;color:var(--parchment);font-size:clamp(34px,5.4vw,68px)}
+.ty .nb{background:var(--night-bar);padding:10px 22px;display:flex;gap:8px 22px;flex-wrap:wrap;color:var(--parchment)}
+.ty .bd{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px;padding:24px 22px}
+.ty .bd p{margin-top:10px}
+footer{background:var(--night-bar);margin-top:40px}footer .wrap{padding-block:34px;display:flex;flex-wrap:wrap;gap:14px 36px;align-items:center;color:var(--ink-muted)}
+footer img{height:48px;width:auto}
+/* player */
+.player{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(10,11,16,.96);border-top:1px solid var(--hairline)}
+.player .wrap{display:flex;align-items:center;gap:10px 16px;min-height:60px;flex-wrap:nowrap}
+.player button{width:40px;height:40px;border-radius:50%;border:1px solid var(--hairline);background:var(--bg-raised);color:var(--parchment);cursor:pointer;flex:none;display:grid;place-items:center}
+.player button:hover{border-color:var(--gold)}.player button.main{background:var(--violet-deep);width:44px;height:44px}
+.player svg{width:16px;height:16px;fill:currentColor}
+.player .tt{flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.player .tt b{display:block;font:var(--w-head) 17px/1.2 var(--f-head);color:var(--ink);overflow:hidden;text-overflow:ellipsis}
+.player input[type=range]{width:110px;accent-color:var(--violet)}
+.player label{display:flex;align-items:center;gap:8px;cursor:pointer;flex:none}
+.player input[type=checkbox]{width:18px;height:18px;accent-color:var(--violet)}
+.view{display:none}.view.on{display:block}
+@media(max-width:900px){.cvgrid{grid-template-columns:minmax(0,1fr)}.ty .bd{grid-template-columns:minmax(0,1fr)}.hero .copy{margin-left:0}}
+@media(max-width:700px){.labels{display:none}.bar .stat{margin-left:0}.player input[type=range]{width:70px}.player .vol-l,.player #prev{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a href="#home" aria-label="Arikuri home"><img class="mark" src="img/wordmark.png" alt="Arikuri"></a>
+<nav id="nav" class="t-label"><a href="#home" data-v="home">Thekan</a><a href="#map" data-v="map">Map</a><a href="#civilizations" data-v="civilizations">Civilizations</a><a href="#news" data-v="chronicle">News · Blog · Lore</a></nav>
+</div></header>
+
+<main>
+<section class="view" id="v-home">
+  <div class="hero">
+    <img class="bg" src="img/keyart.jpg" alt="A painted jungle valley under a lilac sky on Thekan">
+    <div class="inner"><div class="wrap"><div class="copy">
+      <img class="wm" src="img/wordmark.png" alt="Arikuri">
+      <p class="t-quote">A medieval world on a scientifically modelled exoplanet, discovered and quietly disturbed by future Earth.</p>
+      <div class="cta"><a class="btn fill" href="#map">Explore the map</a><a class="btn line" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3367924326">Steam Workshop</a><span class="btn line off" aria-disabled="true" title="Invite coming soon">Discord</span></div>
+    </div></div></div>
+  </div>
+  <div class="bar"><div class="wrap"><span class="t-lead">Exoplanet Total Conversion Mod</span><span class="t-lead obs">Feudal Science Fiction</span><span class="t-label stat">Crusader Kings III 1.21 · Version 1.5.3</span></div></div>
+
+  <section class="band" id="map-anchor"><div class="wrap">
+    <div class="maphead">
+      <div><div class="t-label obs">Survey map</div><h2 class="t-h1" style="margin-top:6px">The twenty-one of Thekan</h2></div>
+      <p class="muted" style="max-width:46ch">Each veil is the land of one civilization. Hover a land to light it, click to open its page.</p>
+    </div>
+    <div class="map" id="homemap"></div>
+    <div class="legend" id="legend"></div>
+    <p class="t-small note" style="max-width:96ch">The distribution of peoples was procedurally generated. From a few details of that seed, such as the phonetic bases of the languages, a lore-rich, immersive and hand-polished world was built with established worldbuilding practice, linguistics included. Territories are shown at the 1.5.3 start date, grouped by cultural heritage.</p>
+  </div></section>
+
+  <section id="premise">
+    <div class="fs"><div class="wrap"><div class="fsrow" style="align-items:start"><div><div class="t-label obs">The premise</div><h2 class="t-h1">A feudal world, watched from the sky</h2></div><div><p class="muted">Thekan is a living medieval world of twenty-one civilizations, each with its own faiths, governments and writing. Long ago observers from a future Earth found it and began to watch, and they were not always careful. Some peoples call them saviours, some call them demons, and many have built part of their religion around what was seen. You play a ruler inside that world, with its wars, courts and creeds, while the sky keeps its own counsel.</p><p class="muted" style="margin-top:14px">Arikuri is a planetary romance. It draws on <i>Hard to Be a God</i> by Arkady and Boris Strugatsky, where historians from Earth live hidden in a feudal kingdom they may not change, and on the planetary adventures of Edgar Rice Burroughs, with their bright, exaggerated worlds of swords and strange peoples.</p></div></div></div></div>
+  </section>
+
+  <section id="features">
+    <div class="fs"><div class="wrap"><div class="fsrow"><div><div class="t-label obs">The world</div><h2 class="t-h1">Generated by scientific algorithms, finished by hand</h2></div><p class="muted">Thekan was first raised by deterministic algorithms, then reworked by hand: rivers that follow the heightmap and die in the deserts, jungle where the rain falls, mountains where the plates meet. No horses live here. Riders mount the Corri, a feathered land griffon.</p></div></div>
+      <div class="cs"><div class="wrap"><div><b>9216 × 4608</b><span class="t-label">Map size</span></div><div><b>2,568</b><span class="t-label">Provinces</span></div><div><b>14</b><span class="t-label">Regions</span></div><div><b>210</b><span class="t-label">River systems</span></div></div></div>
+      <div class="wrap"><details class="credits"><summary class="t-label obs">Tools and credits</summary><div class="pmg"><div>
+        <p class="t-small muted">The seed of this world came from <a href="https://ck2rpg.github.io">ck2rpg's CK3 Procedural Map Generator</a> (PMG). Rock 3 supplied the tectonics, the heightmap and a first temperature model. A newer version of PMG then took over: it modelled the climate and the Köppen zones and generated the provinces, the starting distribution of peoples and faiths, and the phonetic bases of the languages and names. PMG also helped scale the map to its present size. The mod's creator was an early contributor to PMG and is a member of its community, and contributed the Arikuri faith icon set and other pieces to it. The inputs made by the scientific algorithms of PMG and Rock 3 were then taken as raw material. Details such as the phonetic bases and parts of the religions and faiths were expanded by hand into many unique stories and varied societies. They may feel wild by the measure of the real world, but they fit a romanticized, slightly exaggerated world of science fiction romance.</p></div>
+        <div class="cta"><a class="btn line" href="https://ck2rpg.github.io">PMG site</a><a class="btn line" href="https://discord.gg/eemRxbCUX3">PMG Discord</a><a class="btn line" href="https://discord.gg/JwxuuK7HrV">Arikuri channel</a></div></div></details></div></div>
+    <div class="fs"><div class="wrap"><div class="fsrow"><div><div class="t-label obs">The peoples</div><h2 class="t-h1">21 handcrafted civilizations and writing systems</h2></div><p class="muted">Each is polished and rich in lore, and plays as its own megafaction: its own government, technologies, home unit and followers, with variations down to each religion. Together they cover 43 religions, 84 heritages and 14 regions. Some are watched from beyond the sky and have decided what that means.</p></div></div>
+      <div class="cs"><div class="wrap"><div><b>21</b><span class="t-label">Civilizations and writing systems</span></div><div><b>43</b><span class="t-label">Religions</span></div><div><b>132</b><span class="t-label">Faiths</span></div><div><b>84</b><span class="t-label">Heritages</span></div><div><b>19</b><span class="t-label">Governments</span></div></div></div></div>
+    <div class="fs"><div class="wrap"><div class="fsrow"><div><div class="t-label obs">Art and sound</div><h2 class="t-h1">The look and feel of every people</h2></div><p class="muted">A rich set of visual assets carries the look and feel of each civilization: 21 visual packages of scripts, palettes, heraldry, banners and backgrounds, and a thematic soundtrack sung in the languages of Thekan.</p></div></div>
+      <div class="cs"><div class="wrap"><div><b>21</b><span class="t-label">Visual packages</span></div><div><b>530+</b><span class="t-label">Coat-of-arms templates</span></div><div><b>285</b><span class="t-label">Coloured emblems</span></div><div><b>33</b><span class="t-label">Soundtrack tracks</span></div></div></div></div>
+  </section>
+
+  <section class="band" id="civ-anchor"><div class="wrap">
+    <div class="t-label obs">Civilizations</div>
+    <h2 class="t-h1" style="margin-top:6px">Peoples, scripts and homelands</h2>
+    <div class="civs" id="civgrid"></div>
+  </div></section>
+
+  <section class="band" style="padding-top:0"><div class="wrap">
+    <div class="sechead"><div><div class="t-label obs">Releases, dev diaries and lore</div><h2 class="t-h1" style="margin-top:6px">From the chronicle</h2></div><div class="cta"><a class="btn line" href="#news">News</a><a class="btn line" href="#blog">Blog</a><a class="btn line" href="#lore">Lore</a></div></div>
+    <div class="posts" id="newsteaser"></div>
+  </div></section>
+</section>
+
+<section class="view" id="v-list"></section>
+<section class="view" id="v-post"></section>
+<section class="view on" id="v-civ"><div class="wrap"><div class="band"><article class="spre"><p class="t-label"><a href="civ/aiexqelt/">Aiexqelt</a> · the command of Dexa</p><h1 class="t-h1">Enth</h1><p class="t-lead">Enth embraces the teaching of Dexa that only a single, absolute command stands between civilisation and collapse. It is the faith of generals and of those who expect to need them. Its realm, the Eniol Supremacy, takes the warrior path: lords hold their provinces by strength, keep elite retinues and regard leniency as the first sign of decay. The Quv of the Blouck serve it as levies. In script its vowels are stamped as upward triangles, in violet and gold.</p><h2 class="t-h2">The observers: Undeclared</h2><p>Enth has no teaching on the visitors.</p><p>Government: Eniol Supremacy. Realm: Kingdom of Buxcelul.</p></article></div></div></section>
+<section class="view" id="v-type"></section>
+</main>
+
+<!--seo:index-->
+<nav class="sindex" aria-label="All pages"><div class="wrap t-small"><p><span class="t-label">Civilizations</span> <a href="civ/plith/">Plith</a> · <a href="civ/queekwa/">Queekwa</a> · <a href="civ/pfaunkti/">Pfaunkti</a> · <a href="civ/gleuncti/">Gleuncti</a> · <a href="civ/ioddrik/">Ioddrik</a> · <a href="civ/qormaic/">Qormaic</a> · <a href="civ/xacra/">Xacra</a> · <a href="civ/aiexqelt/">Aiexqelt</a> · <a href="civ/veuqrit/">Veuqrit</a> · <a href="civ/aelwrid/">Aelwrid</a> · <a href="civ/qieulbaia/">Qieulbaia</a> · <a href="civ/floicht/">Floicht</a> · <a href="civ/qeomoq/">Qeomoq</a> · <a href="civ/aigl/">Aigl</a> · <a href="civ/kioq/">Kioq</a> · <a href="civ/thramptith/">Thramptith</a> · <a href="civ/blouck/">Blouck</a> · <a href="civ/preolyth/">Preolyth</a> · <a href="civ/wusaun/">Wusaun</a> · <a href="civ/ogilek/">Ogilek</a> · <a href="civ/broulqen/">Broulqen</a></p><p><span class="t-label">Aiexqelt factions</span> <a href="civ/aiexqelt/onfengi/">Onfengi</a> · <a href="civ/aiexqelt/panth/">Panth</a> · <a href="civ/aiexqelt/globith/">Enth</a> · <a href="civ/aiexqelt/ailfaiebi/">Ailfaiebi</a></p><p><span class="t-label">Lore</span> <a href="lore/observer-analysis-aiexqelt-aigl/">Observer analysis: the Aiexqelt and the Aigl</a> · <a href="lore/aiexqelt-song/">Voikæld Qolmæi Xelvoi: Lament of the Four Crowns</a> · <a href="lore/words-of-the-huakken/">The Words of the HuakKen</a> · <a href="lore/chronicle-of-miocched/">The Chronicle of Miocched of Oumbor</a> · <a href="lore/treatise-of-gouelde/">The Treatise of Scholar Gouelde of Aikeq</a> · <a href="lore/survey-report-ak-7249/">Planetary Survey Report AK-7249</a></p><p><span class="t-label">News and blog</span> <a href="news/release-1-5-3/">Civilization gameplay, part one</a> · <a href="news/release-1-5-2/">Balance and banners</a> · <a href="news/release-1-5-1/">Watchers and colours</a> · <a href="news/release-1-5/">The big map update</a> · <a href="news/release-1-4/">Scripts, arms and a new face</a> · <a href="blog/dev-diary-writing-systems/">Writing systems and the road ahead</a> · <a href="blog/dev-diary-a-different-kind-of/">The first dev diary</a></p></div></nav>
+<!--/seo:index-->
+<footer><div class="wrap"><img src="img/wordmark.png" alt="Arikuri"><span class="t-small">Exoplanet Arikuri-1A, a total conversion mod for Crusader Kings III.</span><a class="t-small" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3367924326">Steam Workshop</a><span class="t-small" style="margin-left:auto">Unofficial fan project. Crusader Kings III is a trademark of Paradox Interactive.</span></div></footer>
+
+<div class="player" role="region" aria-label="Soundtrack"><div class="wrap">
+  <button id="prev" aria-label="Previous track"><svg viewBox="0 0 16 16"><path d="M3 2h2v12H3zM14 2v12L6 8z"/></svg></button>
+  <button id="play" class="main" aria-label="Play"><svg viewBox="0 0 16 16"><path id="playicon" d="M4 2l10 6-10 6z"/></svg></button>
+  <button id="next" aria-label="Next track"><svg viewBox="0 0 16 16"><path d="M11 2h2v12h-2zM2 2l8 6-8 6z"/></svg></button>
+  <div class="tt"><span class="t-label">Arikuri OST</span><b id="trk">Soundtrack</b></div><a id="trktag" class="pill t-pill" style="display:none"></a>
+  <span class="t-label vol-l">Volume</span><input id="vol" type="range" min="0" max="1" step="0.05" value="0.6" aria-label="Volume">
+  <label class="t-label"><input id="auto" type="checkbox">Autoplay</label>
+</div></div>
+<audio id="audio" preload="none"></audio>
+
+<!--seo:boot--><script>window.__route="civ-aiexqelt-globith"</script><!--/seo:boot-->
+<script>
+{
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $=id=>document.getElementById(id);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const W=1152,H=576,PITCH=8,SW=3;
+let CIVS=[],BY={},FACS=[],FBY={},NEWS=[],BLOG=[],LORE=[],selected=null,homeMap=null;
+const hexA=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
+const gh=(c,b,f)=>{const k=c.script&&(c.script[f]||c.script.h);return k?`;height:calc(${b}*${k})`:''};
+const mask=f=>`-webkit-mask-image:url(glyphs/${f}.png);mask-image:url(glyphs/${f}.png)`;
+const scriptFile=c=>c.script.kind==='signs'?'emblems-'+c.key:'script-'+c.key;
+const fmtDate=d=>{const m=['January','February','March','April','May','June','July','August','September','October','November','December'];const p=d.split('-');return (p[2]?+p[2]+' ':'')+m[+p[1]-1]+' '+p[0]};
+
+/* ---------- type directions ---------- */
+const TYPES={
+ chronicle:{name:'Chronicle',why:'A calligraphic old-style serif for the world, a thin squared sans for the observers. Closest to the Writing Systems sheets and the loading screen.',fonts:'Alegreya SC · Alegreya · Alegreya Sans · Jura',v:{'--f-display':'\'Alegreya SC\',Georgia,serif','--w-display':500,'--ls-display':'.03em','--tt-display':'none','--f-head':'\'Alegreya\',Georgia,serif','--w-head':600,'--f-quote':'\'Alegreya\',Georgia,serif','--f-pill':'\'Alegreya\',Georgia,serif','--f-body':'\'Alegreya Sans\',system-ui,sans-serif','--s-body':'17px','--f-data':'\'Jura\',system-ui,sans-serif','--w-data':600}},
+ atlas:{name:'Atlas',why:'The pairing already on the Writing Systems sheets: light Fira Sans for titles and captions, Alegreya only inside the civilization pills. Cool, cartographic, the least medieval.',fonts:'Fira Sans Condensed · Fira Sans · Alegreya (pills)',v:{'--f-display':'\'Fira Sans Condensed\',system-ui,sans-serif','--w-display':300,'--ls-display':'.05em','--tt-display':'uppercase','--f-head':'\'Fira Sans\',system-ui,sans-serif','--w-head':300,'--f-quote':'\'Alegreya\',Georgia,serif','--f-pill':'\'Alegreya\',Georgia,serif','--f-body':'\'Fira Sans\',system-ui,sans-serif','--s-body':'16px','--f-data':'\'Fira Sans Condensed\',system-ui,sans-serif','--w-data':500}},
+ gotisch:{name:'Gotisch',why:'Takes the ornate blackletter of the Workshop banner as the display voice. The most feudal and the most game-like. Body stays a plain humanist sans so long pages still read.',fonts:'Grenze Gotisch · Grenze · Alegreya Sans · Oxanium',v:{'--f-display':'\'Grenze Gotisch\',Georgia,serif','--w-display':500,'--ls-display':'.01em','--tt-display':'none','--f-head':'\'Grenze\',Georgia,serif','--w-head':600,'--f-quote':'\'Grenze\',Georgia,serif','--f-pill':'\'Grenze\',Georgia,serif','--f-body':'\'Alegreya Sans\',system-ui,sans-serif','--s-body':'17px','--f-data':'\'Oxanium\',system-ui,sans-serif','--w-data':600}},
+ expedition:{name:'Expedition',why:'A crisp scientific-journal serif throughout, with a narrow technical sans for data. Reads as the observers writing the whole book: the science half leads.',fonts:'Spectral SC · Spectral · Rajdhani',v:{'--f-display':'\'Spectral SC\',Georgia,serif','--w-display':500,'--ls-display':'.04em','--tt-display':'none','--f-head':'\'Spectral\',Georgia,serif','--w-head':600,'--f-quote':'\'Spectral\',Georgia,serif','--f-pill':'\'Spectral\',Georgia,serif','--f-body':'\'Spectral\',Georgia,serif','--s-body':'17px','--f-data':'\'Rajdhani\',system-ui,sans-serif','--w-data':600}},
+ imperial:{name:'Imperial',why:'High-contrast unicase capitals and a sharp Garamond. Elegant and courtly, the voice of the Eniol empire. Thin strokes need larger body text and suit print better than small screens.',fonts:'Cormorant Unicase · Cormorant Garamond · Exo 2',v:{'--f-display':'\'Cormorant Unicase\',Georgia,serif','--w-display':600,'--ls-display':'.02em','--tt-display':'none','--f-head':'\'Cormorant Garamond\',Georgia,serif','--w-head':600,'--f-quote':'\'Cormorant Garamond\',Georgia,serif','--f-pill':'\'Cormorant Garamond\',Georgia,serif','--f-body':'\'Cormorant Garamond\',Georgia,serif','--s-body':'19px','--f-data':'\'Exo 2\',system-ui,sans-serif','--w-data':600}},
+ carved:{name:'Carved',why:'Flared, chiselled capitals for names and banners, close to stone and wood carving, the medium of most Thekan scripts. One weight only, so hierarchy comes from size.',fonts:'Marcellus SC · Marcellus · Alegreya Sans · Jura',v:{'--f-display':'\'Marcellus SC\',Georgia,serif','--w-display':400,'--ls-display':'.05em','--tt-display':'none','--f-head':'\'Marcellus\',Georgia,serif','--w-head':400,'--f-quote':'\'Alegreya\',Georgia,serif','--f-pill':'\'Marcellus\',Georgia,serif','--f-body':'\'Alegreya Sans\',system-ui,sans-serif','--s-body':'17px','--f-data':'\'Jura\',system-ui,sans-serif','--w-data':600}}
+};
+let curType='chronicle';
+const varsOf=k=>Object.entries(TYPES[k].v).map(([a,b])=>a+':'+b).join(';');
+function applyType(k){curType=k;for(const [a,b] of Object.entries(TYPES[k].v))document.documentElement.style.setProperty(a,b);store.set('ari-type',k)}
+applyType(curType);
+function typeView(){
+  const panel=([k,t])=>`<div class="ty ${k===curType?'cur':''}"><div class="hd"><b>${esc(t.name)}</b><span>${esc(t.fonts)}</span><button class="btn ${k===curType?'fill':'line'}" data-type="${k}">${k===curType?'In use on this site':'Use on this site'}</button></div>
+  <div style="${varsOf(k)};font-family:var(--f-body);font-size:var(--s-body)">
+    <div class="bn"><img src="img/keyart.jpg" alt=""><div class="t-banner">Exoplanet Arikuri-1A</div></div>
+    <div class="nb"><span class="t-lead">Exoplanet Total Conversion Mod</span><span class="t-lead obs">Feudal Science Fiction</span><span class="t-label" style="margin-left:auto;color:var(--parchment)">Map · Civilizations · News</span></div>
+    <div class="bd"><div>
+      <div class="t-label obs">Civilization · Ngeelkuin</div>
+      <h3 class="t-h1" style="margin-top:6px">Pidmeddom, the faith of the trackers</h3>
+      <p class="t-quote">He followed the visitors from beyond the sky for nine days, and judged them.</p>
+      <p>The Plith read the forest as others read a page. A bent stem, a silent bird, a mark cut low on a trunk: each is a sign, and children learn the signs before they learn their letters.</p>
+      <h4 class="t-h3" style="margin-top:18px">Two tiers of followers</h4>
+      <p class="t-small muted">A devout ruler calls the people his civilization is known for to his court.</p>
+    </div><div>
+      <dl class="ro"><dt class="t-label">Homeland</dt><dd class="t-value">Ngeelkuin</dd><dt class="t-label">Government</dt><dd class="t-value">Feudal</dd><dt class="t-label">Observers</dt><dd class="t-value">Hostile</dd><dt class="t-label">Version</dt><dd class="t-value gold">1.5.3 · CK3 1.21</dd></dl>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px"><span class="pill t-pill" style="background:#0d3a36">Plith</span><span class="pill t-pill" style="background:#813401">Queekwa</span><span class="pill t-pill" style="background:#2a0080">Floicht</span></div>
+      <p class="t-small muted" style="margin-top:16px">${esc(t.why)}</p>
+    </div></div>
+  </div></div>`;
+  $('v-type').innerHTML=`<div class="wrap"><div class="band"><div class="t-label obs">Design exploration</div><h1 class="t-h1" style="margin:6px 0 10px">Typography directions</h1>
+  <p class="t-lead muted" style="max-width:68ch">Six ways to set Arikuri. Each direction gives a voice to the chronicle (banners and headings), to reading text and to the observers (labels and data). Pick one to try it on the whole site; the choice is remembered in this browser.</p>
+  <p class="t-small note" style="max-width:68ch">The ARIKURI wordmark and the native scripts are artwork and stay the same in every direction. All fonts are open licence and are served from this page.</p>
+  ${Object.entries(TYPES).map(panel).join('')}</div></div>`;
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-type]');if(b){applyType(b.dataset.type);typeView()}});
+
+/* ---------- map ---------- */
+const LAYERS={};
+function loadIndex(name,src,div){
+  return new Promise(res=>{const im=new Image();im.onload=()=>{
+    const c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');x.drawImage(im,0,0,W,H);
+    const d=x.getImageData(0,0,W,H).data,IDX=new Uint8Array(W*H),pix={},edge={},bb={};
+    for(let i=0;i<W*H;i++)IDX[i]=Math.round(d[i*4]/div);
+    for(let y=0;y<H;y++)for(let x2=0;x2<W;x2++){const i=y*W+x2,v=IDX[i];if(!v)continue;(pix[v]=pix[v]||[]).push(i);
+      const b=bb[v]=bb[v]||[W,H,0,0];if(x2<b[0])b[0]=x2;if(y<b[1])b[1]=y;if(x2>b[2])b[2]=x2;if(y>b[3])b[3]=y;
+      if((x2>0&&IDX[i-1]!==v)||(x2<W-1&&IDX[i+1]!==v)||(y>0&&IDX[i-W]!==v)||(y<H-1&&IDX[i+W]!==v))(edge[v]=edge[v]||[]).push(i)}
+    const PIX={},EDGE={};for(const k in pix){PIX[k]=Int32Array.from(pix[k]);EDGE[k]=Int32Array.from(edge[k]||[])}
+    LAYERS[name]={IDX,PIX,EDGE,bb};res()};im.src=src});
+}
+function paintBase(ctx,L,items,fixed,keep){
+  const img=ctx.createImageData(W,H),d=img.data;
+  for(const c of items){const [r,g,b]=hexA(c.veil),P=L.PIX[c.id];if(!P)continue;const isF=fixed===c.id,dim=fixed&&!isF&&!keep;
+    for(let n=0;n<P.length;n++){const i=P[n],x=i%W,y=(i-x)/W,s=((x+y)%PITCH)<SW,a=isF?0.72:(dim?(s?0.16:0.04):(s?0.70:0.34)),o=i*4;d[o]=r;d[o+1]=g;d[o+2]=b;d[o+3]=a*255}
+    const E=L.EDGE[c.id];for(let n=0;n<E.length;n++){const o=E[n]*4;if(isF){d[o]=228;d[o+1]=196;d[o+2]=106;d[o+3]=255}else{d[o]=15;d[o+1]=17;d[o+2]=25;d[o+3]=150}}}
+  ctx.putImageData(img,0,0);
+}
+function paintHover(ctx,L,c){
+  ctx.clearRect(0,0,W,H);if(!c)return;const [r,g,b]=hexA(c.veil),img=ctx.createImageData(W,H),d=img.data,P=L.PIX[c.id],E=L.EDGE[c.id];
+  for(let n=0;n<P.length;n++){const o=P[n]*4;d[o]=r;d[o+1]=g;d[o+2]=b;d[o+3]=172}
+  for(let n=0;n<E.length;n++){const o=E[n]*4;d[o]=228;d[o+1]=196;d[o+2]=106;d[o+3]=255}
+  ctx.putImageData(img,0,0);
+}
+/* opt: layer, items[{id,veil,name,sub,href,banner,label}], fixed(id), labels, crop[x0,y0,x1,y1] */
+function makeMap(el,opt){
+  const L=LAYERS[opt.layer],items=opt.items,byId={};items.forEach(c=>byId[c.id]=c);
+  el.innerHTML=`<div class="stage"><img src="img/relief.jpg" alt="Relief map of Thekan"><canvas class="ov" width="${W}" height="${H}"></canvas><canvas class="hv" width="${W}" height="${H}"></canvas><div class="labels"></div></div><div class="tip" role="status"><div class="t-h3"></div><div class="t-value muted"></div><a class="btn fill go" href="#">Open</a></div>`;
+  const stage=el.querySelector('.stage'),base=el.querySelector('.ov').getContext('2d'),hov=el.querySelector('.hv').getContext('2d'),tip=el.querySelector('.tip'),labels=el.querySelector('.labels');
+  if(opt.crop){const [x0,y0,x1,y1]=opt.crop,cw=x1-x0,ch=y1-y0;el.style.aspectRatio=cw+'/'+ch;stage.style.width=(W/cw*100)+'%';stage.style.height=(H/ch*100)+'%';stage.style.left=(-x0/cw*100)+'%';stage.style.top=(-y0/ch*100)+'%'}
+  const m={el,hot:0,fixed:opt.fixed||0};
+  if(opt.labels)labels.innerHTML=items.map(c=>`<span class="pill t-pill" data-id="${c.id}" style="left:${c.label[0]*100}%;top:${c.label[1]*100}%;background:${c.banner}">${esc(c.name)}</span>`).join('');
+  m.redraw=()=>paintBase(base,L,items,m.fixed,opt.keep);m.redraw();
+  const at=e=>{const r=stage.getBoundingClientRect(),x=Math.floor((e.clientX-r.left)/r.width*W),y=Math.floor((e.clientY-r.top)/r.height*H);if(x<0||y<0||x>=W||y>=H)return 0;const v=L.IDX[y*W+x];return byId[v]?v:0};
+  const show=(id,e,touch)=>{
+    if(id!==m.hot){m.hot=id;paintHover(hov,L,id&&id!==m.fixed?byId[id]:null);if(opt.onHot)opt.onHot(id);labels.querySelectorAll('.pill').forEach(p=>p.classList.toggle('hot',+p.dataset.id===id))}
+    if(!id){tip.classList.remove('on');el.style.cursor='';return}
+    const c=byId[id];el.style.cursor='pointer';tip.children[0].textContent=c.name;tip.children[1].textContent=c.sub;tip.children[2].href=c.href;tip.classList.toggle('touch',!!touch);
+    const r=el.getBoundingClientRect();let x=e.clientX-r.left+16,y=e.clientY-r.top+16;if(x>r.width-220)x=e.clientX-r.left-216;if(y>r.height-90)y=e.clientY-r.top-96;
+    tip.style.left=Math.max(6,x)+'px';tip.style.top=Math.max(6,y)+'px';tip.classList.add('on')};
+  el.addEventListener('pointermove',e=>{if(e.pointerType!=='touch')show(at(e),e)});
+  el.addEventListener('pointerleave',()=>show(0));
+  el.addEventListener('click',e=>{if(e.target.closest('.go'))return;const id=at(e);if(!id)return;
+    if(matchMedia('(hover:none)').matches&&m.hot!==id){show(id,e,true);return}
+    location.hash=byId[id].href.slice(1)});
+  m.highlight=id=>{m.hot=id;paintHover(hov,L,id?byId[id]:null);labels.querySelectorAll('.pill').forEach(p=>p.classList.toggle('hot',+p.dataset.id===id))};
+  m.reset=()=>{m.fixed=opt.fixed||0;m.redraw();m.highlight(0);tip.classList.remove('on');el.style.cursor=''};
+  return m;
+}
+const civItems=()=>CIVS.map(c=>({id:c.id,veil:c.veil,banner:c.banner,name:c.name,sub:c.homeland,href:'#civ-'+c.key,label:c.label}));
+const facItems=()=>FACS.map(f=>({id:f.fid,veil:f.veil,banner:f.banner,name:f.name,sub:f.gov,href:'#civ-aiexqelt-'+f.key,label:[0,0]}));
+const padBox=(b,p)=>{let [x0,y0,x1,y1]=b;const w=x1-x0,h=y1-y0;x0-=w*p;x1+=w*p;y0-=h*p;y1+=h*p;if((x1-x0)<2*(y1-y0)){const cx=(x0+x1)/2,ww=2*(y1-y0);x0=cx-ww/2;x1=cx+ww/2}if(y1>H){y0-=y1-H;y1=H}if(x0<0){x1-=x0;x0=0}return [x0,y0,x1,y1]};
+function syncLegend(id){document.querySelectorAll('#legend button').forEach(b=>b.classList.toggle('dim',!!id&&+b.dataset.id!==id))}
+
+/* ---------- pieces ---------- */
+const swatches=c=>[...c.coa.d.slice(0,2),...c.coa.m.slice(0,3),...c.coa.l.slice(0,1),c.veil].map(h=>`<i style="background:${h}"></i>`).join('');
+function civCard(c){return `<a class="cc" href="#civ-${c.key}"><div class="band2" style="background:${c.banner}"><div class="gl" style="${mask('card-'+c.key)}"></div><h3 class="t-h2">${esc(c.name)}</h3></div><div class="meta"><div class="t-label">${esc(c.homeland)}</div><div class="t-small muted rl" style="margin-top:6px">${c.religions.map(r=>`<span>${r.icon?`<img src="img/rel/${r.icon}.png" alt="">`:''}${esc(r.name)}</span>`).join('')}</div><div class="sw">${swatches(c)}</div></div></a>`}
+const foc=a=>(DATA.focus&&DATA.focus[a])?` style="object-position:${DATA.focus[a]}"`:'';
+const artOf=n=>n.art==='keyart'?'img/keyart.jpg':'art/'+n.art+'.jpg';
+function postCard(n,kind){return `<a class="nc" href="#${kind}-${n.id}"><img src="${artOf(n)}" alt="" loading="lazy"${foc(n.art)}><div class="b"><div class="t-label gold">${esc(n.version?('Version '+n.version):n.kind)} · ${esc(fmtDate(n.date))}</div><h3 class="t-h3">${esc(n.title)}</h3><div class="t-small muted">${esc(n.lead)}</div></div></a>`}
+const MOONS='<svg viewBox="0 0 26 26"><circle cx="9" cy="14" r="7" fill="#fae6cf"/><circle cx="19" cy="8" r="4" fill="none" stroke="#fae6cf" stroke-width="1.6"/></svg>';
+const EYE='<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 24C9.5 15.5 16.2 11.5 24 11.5S38.5 15.5 44 24C38.5 32.5 31.8 36.500 24 36.500S9.5 32.5 4 24Z"/><circle cx="24" cy="24" r="7.2"/><circle cx="24" cy="24" r="2.6" fill="currentColor" stroke="none"/><path d="M24 4.500v3M11 8.500l1.800 2.600M37 8.500l-1.800 2.600" stroke-width="1.800"/></svg>';
+const loreIcon=l=>l.icon.t==='observer'?EYE:l.icon.t==='civ'?`<img class="g" src="img/icon-${l.icon.k}.png" alt="">`:MOONS;
+function loreItem(l,open){return `<details class="lore" id="lore-${l.id}" ${open?'open':''}><summary><span class="ic" ${l.icon.t==='civ'?`style="background:${BY[l.icon.k].banner}"`:''}>${loreIcon(l)}</span><span><span class="t-label ${l.icon.t==='observer'?'obs':''}">${esc(l.source)}</span><span class="t-h3" style="display:block">${esc(l.title)}</span></span><span class="chev">›</span></summary>
+  <div class="body"><p class="${l.pending||l.parts||l.verses||l.sections?'muted':'t-quote'}">${esc(l.text)}</p>${l.verses&&l.track?`<div class="links" style="margin-top:12px"><button class="btn line" data-track="${esc(l.track)}">Play the theme</button></div>`:''}${(l.sections||[]).map(([n,t])=>`<div class="part sc"><div class="t-label obs">${esc(n)}</div><p>${esc(t)}</p></div>`).join('')}${(l.verses||[]).map(v=>`<div class="part vs"><div class="t-label">${esc(v.name)}</div>${v.lines.map(([r,i,e,n])=>`<div class="ln${n?' off':''}"><div class="r">${esc(r)}${n?` <span class="t-label">${esc(n)}</span>`:''}</div><div class="i">/${esc(i)}/</div><div class="e">${esc(e)}</div></div>`).join('')}</div>`).join('')}${(l.parts||[]).map(([n,t])=>`<div class="part ${/IPA/.test(n)?'ipa':''}"><div class="t-label">${esc(n)}</div><pre>${esc(t)}</pre></div>`).join('')}<div class="links">${l.track&&!l.verses?`<button class="btn line" data-track="${esc(l.track)}">Play the theme</button>`:''}${l.civs.map(k=>`<a class="pill t-pill" style="background:${BY[k].banner}" href="#civ-${k}">${esc(BY[k].name)}</a>`).join('')}</div></div></details>`}
+function listView(kind,openId){
+  const T={news:['News','Release notes for every published version. The full change list is kept in the mod changelog.'],blog:['Blog','Dev diaries as posted to the community.'],lore:['Lore','Texts from Thekan itself, and reports from those who watch it.']}[kind];
+  const body=kind==='lore'?`<div style="margin-top:22px">${LORE.map(l=>loreItem(l,l.id===openId)).join('')}</div>`:`<div class="posts">${(kind==='news'?NEWS:BLOG).map(n=>postCard(n,kind)).join('')}</div>`;
+  $('v-list').innerHTML=`<div class="wrap"><div class="band"><div class="t-label obs">Chronicle</div><h1 class="t-h1" style="margin:6px 0 0">${T[0]}</h1>
+  <nav class="tabs t-label">${['news','blog','lore'].map(k=>`<a href="#${k}" class="${k===kind?'on':''}">${k[0].toUpperCase()+k.slice(1)}</a>`).join('')}</nav>
+  <p class="t-lead muted" style="max-width:64ch;margin-top:14px">${T[1]}</p>${body}</div></div>`;
+  if(openId){const el=$('lore-'+openId);if(el)el.scrollIntoView()}
+}
+function postView(kind,n){
+  const items=kind==='news'?NEWS:BLOG,i=items.indexOf(n),prev=items[i+1],next=items[i-1];
+  $('v-post').innerHTML=`<div class="wrap"><div class="band"><article class="article">
+  <a class="t-label" href="#${kind}">← ${kind==='news'?'All news':'All posts'}</a>
+  <div class="t-label gold" style="margin-top:22px">${esc(n.version?('Version '+n.version):n.kind)} · ${esc(fmtDate(n.date))}</div>
+  <h1 class="t-h1" style="margin-top:8px">${esc(n.title)}</h1>
+  <p class="t-lead muted" style="margin-top:12px">${esc(n.lead)}</p>
+  <img class="lead" src="${artOf(n)}" alt=""${foc(n.art)}>
+  ${n.quote?`<blockquote class="t-quote">${esc(n.quote)}</blockquote>`:''}
+  ${n.track?`<button class="btn line" data-track="${esc(n.track)}">Play the theme</button>`:''}
+  ${(n.sections||[]).map(([h,its])=>`<h4 class="t-label obs">${esc(h)}</h4><ul>${its.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`).join('')}
+  ${n.link?`<p style="margin-top:24px"><a class="btn line" href="${esc(n.link[1])}">${esc(n.link[0])}</a></p>`:''}
+  <nav class="pn">${prev?`<a class="t-small" href="#${kind}-${prev.id}">← ${esc(prev.title)}</a>`:'<span></span>'}${next?`<a class="t-small" href="#${kind}-${next.id}">${esc(next.title)} →</a>`:''}</nav>
+  </article></div></div>`;
+}
+const palette=(coa,veil)=>[...coa.d.map((x,i)=>['d'+(i+1),x]),...coa.m.map((x,i)=>['m'+(i+1),x]),...coa.l.map((x,i)=>['l'+(i+1),x]),['veil',veil]].filter(p=>p[1]).map(([n,h])=>`<div><i style="background:${h}"></i><span class="t-label" style="letter-spacing:.04em;text-transform:none">${n} ${h}</span></div>`).join('');
+const ro=rows=>`<dl class="ro">${rows.map(([a,b,raw])=>`<dt class="t-label">${esc(a)}</dt><dd class="t-value">${raw?b:esc(b)}</dd>`).join('')}</dl>`;
+function civPage(c){
+  const i=c.id-1,prev=CIVS[(i+20)%21],next=CIVS[(i+1)%21],isE=c.key==='aiexqelt';
+  const hero=c.art?`<img class="bg" src="art/${c.art}.jpg" alt=""${foc(c.art)}>`:`<div class="em" style="${mask(scriptFile(c))}"></div>`;
+  const tb=t=>`<button class="btn line thm" data-track="${esc(t.file)}">&#9654; ${esc(t.title)}</button>`;
+  const civT=TRACKS.filter(t=>t.civ===c.key&&!t.rel);
+  const civL=LORE.filter(l=>l.civs.includes(c.key));
+  const rels=c.religions.map(r=>`<div class="rel"><h3 class="t-h3">${r.icon?`<img class="ri" src="img/rel/${r.icon}.png" alt="">`:''}${esc(r.name)}<span class="t-label ad">${esc(r.adherents)} · ${r.faiths} faiths</span></h3><p>${esc(r.desc)}</p>${TRACKS.filter(t=>t.civ===c.key&&t.rel===r.name).map(t=>`<div class="themes"><span class="t-label">Theme</span>${tb(t)}</div>`).join('')}</div>`).join('');
+  const unitArt=c.unitArt.length?`<div class="unitart">${c.unitArt.map(a=>`<img src="art/${a}.jpg" alt="${esc(c.unit.name)}" loading="lazy"${foc(a)}>`).join('')}</div>`:'';
+  const facs=isE?`<section class="sec"><h2 class="t-h2">The four factions</h2><p class="muted" style="margin:-4px 0 16px">One empire, four realms, four paths of the same faith. Each has its own government, colours and vowel mark.</p><div class="facs">${FACS.map(f=>`<a class="fc" href="#civ-aiexqelt-${f.key}"><div class="hd" style="background:${f.banner}"><div class="gl" style="${mask('script-aiexqelt-'+f.key)};background:${f.coa.l[0]}"></div><h3 class="t-h3">${f.icon?`<img class="ri" src="img/rel/${f.icon}.png" alt="">`:''}${esc(f.name)}</h3></div><div class="bd"><div class="t-label">${esc(f.gov)}</div><div class="t-small muted" style="margin-top:6px">${esc(f.path[0].toUpperCase()+f.path.slice(1))}. ${esc(f.realm)}.</div></div></a>`).join('')}</div></section>`:'';
+  return `<div style="--c:${c.banner};--vl:${c.veil};--d1:${c.coa.d[0]};--l1:${c.coa.l[0]};--m1:${c.coa.m[0]}">
+  <div class="cv-hero">${hero}<div class="inner"><div class="wrap">
+    <div class="gl" style="${mask(c.script.titleImg||scriptFile(c))}${gh(c,'clamp(40px,5vw,60px)','th')}"></div>
+    <h1 class="t-banner">${esc(c.name)}</h1>
+    <div class="t-quote">${esc(c.tagline)}</div>
+  </div></div></div>
+  <div class="cvbar"><div class="wrap"><a class="t-label" href="#map">← Back to the map</a></div></div>
+  <div class="wrap"><div class="band"><div class="cvgrid">
+    <div>
+      <section class="sec"><h2 class="t-h2">Origins</h2><p class="t-lead">${esc(c.origin)}</p>${civT.length?`<div class="themes"><span class="t-label">${civT.length>1?'Themes':'Theme'}</span>${civT.map(tb).join('')}</div>`:''}${civL.length?`<div class="themes"><span class="t-label">Lore</span>${civL.map(l=>`<a class="btn line thm lr" href="#lore-${l.id}">${esc(l.title)}</a>`).join('')}</div>`:''}</section>
+      <section class="sec"><h2 class="t-h2">Peoples and religions</h2><div class="feat nums">${[['heritages','Heritages'],['cultures','Cultures'],['realms','Independent realms at the start'],['religions','Religions'],['faiths','Faiths']].map(([k,l])=>`<div><b>${c.counts[k]}</b><span class="t-label">${l}</span></div>`).join('')}</div><div style="margin-top:18px">${rels}</div></section>
+      ${facs}
+      <section class="sec"><h2 class="t-h2">How they play</h2>
+        <div class="mech">
+          <div class="card"><h3 class="t-h3">${esc(c.tech_a.name)}</h3><p>${esc(c.tech_a.desc)}</p></div>
+          <div class="card"><h3 class="t-h3">${esc(c.tech_b.name)}</h3><p>${esc(c.tech_b.desc)}</p></div>
+          <div class="card" style="grid-column:1/-1"><div class="t-label">Home unit · raised from ${esc(c.home)}</div><h3 class="t-h3">${esc(c.unit.name)}</h3>${c.unit.flavor?`<p class="t-quote" style="color:var(--ink)">${esc(c.unit.flavor)}</p>`:''}${unitArt}</div>
+          <div class="card"><div class="t-label">Followers · tier 1</div><h3 class="t-h3">${esc(c.followers[0])}</h3><p>${esc(c.followers_desc[0])}</p></div>
+          <div class="card"><div class="t-label">Followers · tier 2</div><h3 class="t-h3">${esc(c.followers[1])}</h3><p>${esc(c.followers_desc[1])}</p></div>
+        </div>
+      </section>
+    </div>
+    <aside class="side">
+      <div class="card"><div class="t-label obs" style="margin-bottom:8px">Observer file · ${esc(c.name)}</div>
+        ${ro([['Homeland',c.homeland],['Government',c.governments.join(' · ')],['Religions',c.religions.map(r=>r.name).join(' · ')],['Attitude to observers',`<span class="att">${esc(c.observer.label)}</span>`,1]])}
+        <p class="t-small muted" style="margin-top:10px">${esc(c.observer.text)}</p></div>
+      <div class="card"><div class="t-label obs" style="margin-bottom:10px">Writing system</div>
+        <div class="spec"><div class="gl" style="${mask(c.script.specImg||scriptFile(c))}${gh(c,'64px','sh')}"></div>${c.emblems&&c.script.kind!=='signs'?`<div class="gl em2" style="${mask('emblems-'+c.key)}"></div>`:''}</div>
+        <div style="margin-top:12px">${ro([['Type',c.script.type],['Medium',c.script.medium],['Direction',c.script.direction]])}</div>
+        <p class="t-small muted" style="margin-top:10px">${esc(c.script.kind==='signs'?'No letter forms are drawn for this script yet. Shown here are its heraldic signs.':(c.script.note||'Letter forms as drawn for the coat of arms.')+(c.emblems&&c.script.rows!=='letters'?' Below them, heraldic signs.':''))}</p></div>
+      <div><div class="t-label" style="margin-bottom:8px">On the map</div><div class="map" id="civmap"></div></div>
+      <div><div class="t-label" style="margin-bottom:8px">Heraldic palette</div>${c.palettes?c.palettes.map((p,i)=>`<div class="t-label" style="margin:${i?14:0}px 0 6px;text-transform:none;letter-spacing:.04em">${esc(p.name)}</div><div class="pal">${palette(p,i===c.palettes.length-1?c.veil:null)}</div>`).join(''):`<div class="pal">${palette(c.coa,c.veil)}</div>`}</div>
+    </aside>
+  </div>
+  <nav class="pn"><a class="pill t-pill" style="background:${prev.banner}" href="#civ-${prev.key}">← ${esc(prev.name)}</a><a class="pill t-pill" style="background:${next.banner}" href="#civ-${next.key}">${esc(next.name)} →</a></nav>
+  </div></div></div>`;
+}
+function facPage(f){
+  const i=FACS.indexOf(f),prev=FACS[(i+3)%4],next=FACS[(i+1)%4],gd=DATA.govdesc[f.gov]||'';
+  return `<div style="--c:${f.banner};--vl:${f.veil};--d1:${f.coa.d[0]};--l1:${f.coa.l[0]};--m1:${f.coa.m[0]}">
+  <div class="cv-hero"><img class="bg" src="art/${f.art}.jpg" alt=""${foc(f.art)}><div class="inner"><div class="wrap">
+    <div class="gl" style="${mask('script-aiexqelt-'+f.key)}"></div>
+    <h1 class="t-banner">${esc(f.name)}</h1>
+    <div class="t-quote">A faction of the Eniol empire. ${esc(f.path[0].toUpperCase()+f.path.slice(1))}.</div>
+  </div></div></div>
+  <div class="cvbar"><div class="wrap"><a class="t-label" href="#civ-aiexqelt">← Back to the Aiexqelt</a></div></div>
+  <div class="wrap"><div class="band"><div class="cvgrid">
+    <div>
+      <section class="sec"><h2 class="t-h2">The path</h2><p class="t-lead">${esc(f.text)}</p></section>
+      <section class="sec"><h2 class="t-h2">${esc(f.gov)}</h2><p class="muted">${esc(gd)}</p></section>
+      <section class="sec"><h2 class="t-h2">The other factions</h2><div class="facs">${FACS.filter(x=>x!==f).map(x=>`<a class="fc" href="#civ-aiexqelt-${x.key}"><div class="hd" style="background:${x.banner}"><h3 class="t-h3" style="margin:0">${esc(x.name)}</h3></div><div class="bd"><div class="t-label">${esc(x.gov)}</div></div></a>`).join('')}</div></section>
+    </div>
+    <aside class="side">
+      <div class="card"><div class="t-label obs" style="margin-bottom:8px">Observer file · ${esc(f.name)}</div>
+        ${ro([['Faith',f.name+', a path of Dath'],['Government',f.gov],['Culture',f.culture],['Realm',f.realm],['Attitude to observers',`<span class="att">${esc(f.observer.label)}</span>`,1]])}
+        <p class="t-small muted" style="margin-top:10px">${esc(f.observer.text)}</p></div>
+      <div class="card"><div class="t-label obs" style="margin-bottom:10px">Writing system</div>
+        <div class="spec"><div class="gl" style="${mask('script-aiexqelt-'+f.key)}"></div><div class="gl em2" style="${mask('emblems-aiexqelt-'+f.key)}"></div></div>
+        <div style="margin-top:12px">${ro([['Script','Aiexqelt alphabet'],['Vowel mark',f.mark]])}</div>
+        <p class="t-small muted" style="margin-top:10px">All four factions write the same consonants in the same square blocks. Vowels are added in coloured ink, and each faction uses its own shape. The circle is the old, classical form.</p></div>
+      <div><div class="t-label" style="margin-bottom:8px">In the empire</div><div class="map" id="facmap"></div></div>
+      <div><div class="t-label" style="margin-bottom:8px">Heraldic palette</div><div class="pal">${palette(f.coa,f.veil)}</div></div>
+    </aside>
+  </div>
+  <nav class="pn"><a class="pill t-pill" style="background:${prev.banner}" href="#civ-aiexqelt-${prev.key}">← ${esc(prev.name)}</a><a class="pill t-pill" style="background:${next.banner}" href="#civ-aiexqelt-${next.key}">${esc(next.name)} →</a></nav>
+  </div></div></div>`;
+}
+const eniolCrop=()=>{const bb=LAYERS.fac.bb;let b=[W,H,0,0];for(const k in bb){b=[Math.min(b[0],bb[k][0]),Math.min(b[1],bb[k][1]),Math.max(b[2],bb[k][2]),Math.max(b[3],bb[k][3])]}return padBox(b,.18)};
+
+/* ---------- router ---------- */
+let DATA=null;
+function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id===id))}
+function route(){
+  const h=location.hash.slice(1)||window.__route||'home';let nav='home',title='Arikuri · Thekan',top=true;
+  const fm=h.match(/^civ-aiexqelt-(\w+)$/);
+  if(fm&&FBY[fm[1]]){const f=FBY[fm[1]];$('v-civ').innerHTML=facPage(f);show('v-civ');makeMap($('facmap'),{layer:'fac',items:facItems(),fixed:f.fid,keep:true,crop:eniolCrop()});nav='civilizations';title=f.name+' · Arikuri';selected='aiexqelt'}
+  else if(h.startsWith('civ-')&&BY[h.slice(4)]){const c=BY[h.slice(4)];selected=c.key;$('v-civ').innerHTML=civPage(c);show('v-civ');
+    if(c.key==='aiexqelt')makeMap($('civmap'),{layer:'fac',items:facItems(),crop:eniolCrop()});else makeMap($('civmap'),{layer:'civ',items:civItems(),fixed:c.id});
+    nav='civilizations';title=c.name+' · Arikuri'}
+  else if(h==='news'||h==='blog'||h==='lore'){listView(h);show('v-list');nav='chronicle';title=h[0].toUpperCase()+h.slice(1)+' · Arikuri'}
+  else if(h.startsWith('lore-')){listView('lore',h.slice(5));show('v-list');nav='chronicle';title='Lore · Arikuri';top=false}
+  else if(/^(news|blog)-/.test(h)){const kind=h.slice(0,4),n=(kind==='news'?NEWS:BLOG).find(x=>x.id===h.slice(5));if(n){postView(kind,n);show('v-post');nav='chronicle';title=n.title+' · Arikuri'}else{location.hash=kind;return}}
+  else{show('v-home');if(homeMap){homeMap.reset();syncLegend(0)}
+    const anchors={map:'map-anchor',civilizations:'civ-anchor',features:'features'};if(anchors[h]){$(anchors[h]).scrollIntoView();nav=h;top=false}}
+  if(top)window.scrollTo(0,0);document.title=title;
+  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===nav));
+}
+
+/* ---------- player ---------- */
+const audio=$('audio');let TRACKS=[],ti=0,armed=false;
+const setIcon=()=>{$('playicon').setAttribute('d',audio.paused?'M4 2l10 6-10 6z':'M3 2h4v12H3zM9 2h4v12H9z');$('play').setAttribute('aria-label',audio.paused?'Play':'Pause')};
+const showTrack=()=>{const t=TRACKS[ti],g=$('trktag');$('trk').textContent=t.title;if(t.civ&&BY[t.civ]){g.style.display='';g.textContent=BY[t.civ].name+(t.rel?' · '+t.rel:'');g.style.background=BY[t.civ].banner;g.href='#civ-'+t.civ}else g.style.display='none'};
+function load(i,play){ti=(i+TRACKS.length)%TRACKS.length;audio.src='music/'+TRACKS[ti].file+'.mp3';showTrack();store.set('ari-track',ti);if(play)audio.play().catch(()=>{})}
+$('play').addEventListener('click',()=>{if(!audio.src)load(ti,false);if(audio.paused)audio.play().catch(()=>{});else audio.pause()});
+$('next').addEventListener('click',()=>load(ti+1,true));$('prev').addEventListener('click',()=>load(ti-1,true));
+audio.addEventListener('play',setIcon);audio.addEventListener('pause',setIcon);audio.addEventListener('ended',()=>load(ti+1,true));
+$('vol').addEventListener('input',e=>{audio.volume=+e.target.value;store.set('ari-vol',e.target.value)});
+$('auto').addEventListener('change',e=>{store.set('ari-auto',e.target.checked?'1':'0');if(e.target.checked&&audio.paused){if(!audio.src)load(ti,false);audio.play().catch(()=>{})}});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-track]');if(b){const i=TRACKS.findIndex(t=>t.file===b.dataset.track);if(i>=0)load(i,true)}});
+function initPlayer(){
+  const v=store.get('ari-vol');if(v!==null){$('vol').value=v}audio.volume=+$('vol').value;
+  ti=Math.min(TRACKS.length-1,+(store.get('ari-track')||0)||0);showTrack();
+  if(store.get('ari-auto')==='1'){$('auto').checked=true;load(ti,false);
+    audio.play().catch(()=>{const go=()=>{if($('auto').checked&&audio.paused)audio.play().catch(()=>{});removeEventListener('pointerdown',go)};addEventListener('pointerdown',go)})}
+}
+
+fetch('data/site.json').then(r=>r.json()).then(async d=>{
+  DATA=d;CIVS=d.civs;CIVS.forEach(c=>BY[c.key]=c);FACS=d.factions;FACS.forEach(f=>FBY[f.key]=f);NEWS=d.news;BLOG=d.blog;LORE=d.lore;TRACKS=d.tracks;
+  $('civgrid').innerHTML=CIVS.map(civCard).join('');
+  $('newsteaser').innerHTML=NEWS.slice(0,3).map(n=>postCard(n,'news')).join('');
+  const lg=$('legend');lg.innerHTML=CIVS.map(c=>`<button class="pill t-pill" data-id="${c.id}" style="background:${c.banner}">${esc(c.name)}</button>`).join('');
+  initPlayer();
+  await Promise.all([loadIndex('civ','img/civ-index.png',11),loadIndex('fac','img/fac-index.png',40)]);
+  homeMap=makeMap($('homemap'),{layer:'civ',items:civItems(),labels:true,onHot:syncLegend});
+  lg.addEventListener('pointerover',e=>{const b=e.target.closest('button');if(b){homeMap.highlight(+b.dataset.id);syncLegend(+b.dataset.id)}});
+  lg.addEventListener('pointerout',()=>{homeMap.highlight(0);syncLegend(0)});
+  lg.addEventListener('click',e=>{const b=e.target.closest('button');if(b)location.hash='civ-'+CIVS[b.dataset.id-1].key});
+  addEventListener('hashchange',route);route();
+  if(window.__route)document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(a){e.preventDefault();const t=a.getAttribute('href');if(location.hash===t)route();else location.hash=t}});
+});
+}
+</script>
+</body>
+</html>
