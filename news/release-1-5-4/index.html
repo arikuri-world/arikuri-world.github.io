@@ -307,7 +307,7 @@ const hexA=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
 const gh=(c,b,f)=>{const k=c.script&&(c.script[f]||c.script.h);return k?`;height:calc(${b}*${k})`:''};
 const mask=f=>`-webkit-mask-image:url(glyphs/${f}.png);mask-image:url(glyphs/${f}.png)`;
 const scriptFile=c=>c.script.kind==='signs'?'emblems-'+c.key:'script-'+c.key;
-const fmtDate=d=>{const m=['January','February','March','April','May','June','July','August','September','October','November','December'];const p=d.split('-');return (p[2]?+p[2]+' ':'')+m[+p[1]-1]+' '+p[0]};
+const fmtDate=d=>{const m=['January','February','March','April','May','June','July','August','September','October','November','December'];const p=d.split('-');return m[+p[1]-1]+' '+p[0]};
 
 /* ---------- type directions ---------- */
 const TYPES={
